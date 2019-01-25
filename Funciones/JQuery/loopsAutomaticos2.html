@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-3.3.1.js"></script>
+
+    <style>
+        #anuncio{
+            background-color: #000;
+            color: #FFF;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div id="anuncio">
+        COMPRA
+    </div>
+
+    <script>
+        /*JAVASCRIPT
+        var anuncio = document.getElementById("anuncio");
+        anuncio.style.width="300px";
+        anuncio.style.height="300px";
+        anuncio.innerHTML="VENDE";
+        */
+       $(document).ready(function() { 
+            $("#anuncio").width(300)
+                .height(300)
+                .text("VENDE")
+                .hide()
+                .fadeIn(10000)
+            ;
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="operadores.css">in
+    
+
+</head>
+<body>
+    <div class="contenedor">
+        <div class="header">
+            <p class="logo">Curso de JavaScript</p>
+        </div>
+    </div>
+    <div class="contenido">
+        <div class="principal">
+            <h1>Jugando con variables</h1>
+            <script>
+                var nombre = prompt("Introduce tu nombre por favor");
+                var apellido = prompt("Introduce tu apellido por favor");
+                var edad = prompt("Introduce tu edad por favor");
+                var restando = prompt("Cuantos años deseas quitarte");
+                document.write("<p>Bienvenido:  " + nombre + " " + apellido + "<p>");
+                edad -= restando;
+                document.write("<p>Tu edad final es:  " + edad + "<p>");
+            </script>
+        </div>
+    </div>
+</body>
+</html>

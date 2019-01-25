@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" id="boton">  
+    <input type="button" id="boton2"> 
+    <input type="text" id="caja">
+    
+    <script>
+        var boton = document.getElementById("boton");
+        boton.style.width   = "80px";
+        boton.style.height  = "40px";
+        //boton.style.background = "blue";
+        var boton2 = document.getElementById("boton2");
+        boton2.style.width   = "80px";
+        boton2.style.height  = "40px";
+        boton2.focus();
+        //boton2.style.background = "blue";
+        var caja = document.getElementById("caja");
+        caja.style.background = "red";
+        caja.value = "Escribe aqui...";
+        caja.style.color = "white";
+        caja.style.height = "20px";
+    </script>
+</body>
+</html>

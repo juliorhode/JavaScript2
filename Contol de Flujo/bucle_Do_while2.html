@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1" >
+        <tr>
+            <td>
+                <label for="mensaje"></label>
+                <input type="text" id="mensaje">
+            </td>
+            <td>
+                <label for="intentos"></label>
+                <input type="text" id="intentos">
+            </td>
+        </tr>
+    </table>
+    <script>
+        //Generamos un numero aleatorio y lo redondeamos para que no tenga decimales
+        var aleatorio = Math.round(Math.random()*100);
+        //console.log(aleatorio);
+        var numero, intentos;
+    
+        numero = 0;
+        intentos = 0;
+    
+        var txt_mensaje=document.getElementById("mensaje");
+        var nu_intentos=document.getElementById("intentos");
+    
+        do {
+            numero=prompt("Introduce un numero entre 0 y 100 " + aleatorio);
+    
+            if (aleatorio > numero) {
+                txt_mensaje.value="Es muy alto";
+                txt_mensaje.style.fontSize="18px";
+                //alert("El numero introducido es mas alto");
+                //document.write("El numero introducido es mas alto" + "<br/>");
+            }
+            if (aleatorio < numero) {
+                txt_mensaje.value="Es muy bajo";
+                txt_mensaje.style.fontSize="18px";
+                //alert("El numero introducido es mas bajo");
+                //document.write("El numero introducido es mas bajo" + "<br/>");
+            }
+            intentos++;
+            nu_intentos.value=intentos;//asignamos el valor de la variable intentos
+            nu_intentos.style.fontSize="18px";
+            nu_intentos.style.color="red";
+        } while (aleatorio!=numero);
+        //alert("Haz acertado el numero");
+        //document.write("<p>Realizaste " + intentos +" intentos para acertar el numero</p>");
+        txt_mensaje.value="Correcto";
+        txt_mensaje.style.fontSize="18px";
+        txt_mensaje.style.color="red";
+        
+    </script>
+</body>
+
+</html>

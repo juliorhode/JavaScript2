@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <style>
+        .micontenedor{
+            background-color: #0f0;
+        }
+    </style>
+
+    <script src="jquery-3.3.1.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            
+            // .html() sustitulle texto
+            alert( $("#errores").html() );
+            alert( $("#errores h2").html() );
+
+            $("#errores").html("<p>Hay errores en el formulario...(1)</p>");
+
+            // .append() agrega texto
+            /*blocklevel (etiqueta de bloque) vienen acompañado de un 
+            salto de linea como son los div, h1...6, etc
+            */
+           
+            $("#errores").append("<p>Estamos agregando nuevos errores en el formulario...(2)</p>");
+            // .append() agrega texto antes de todo
+            $("#errores").prepend("<p>Lo vamos agregar antes de el error (1)...(3)</p>");
+
+            $("#errores").before("<p>Esto va a ser antes del div errores</p>");
+            $("#errores").after("<p>Esto va a ser despues del div errores</p>");
+
+            // no manipula etiquetas, sustitulle un texto por otro
+            //$("#errores").text("Nuevo texto con .text()");
+            
+        });
+    </script>
+</head>
+<body>
+    
+    <div id="contenedor">
+        <div id="errores" class="micontenedor">
+            <h2>Errores</h2>
+        </div>
+    </div>
+
+</body>
+</html>

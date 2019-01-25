@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <style>
+        img{
+            float: left;/*uno al lado del otro*/
+            margin: 5px;
+            width: 200px;
+            height: 150px;
+        }
+        #banner{
+            background-color: red;
+            width: 450px;
+            height: 300px;
+            position: absolute;
+            left: 190px;
+            top: 50px;
+            font-size: 36px;
+            text-align: center;
+        }
+        /*
+        #imagen1,#imagen2,#imagen3,#imagen4{
+            float: left; uno al lado del otro
+            margin: 5px;
+            width: 200px;
+            height: 150px;
+            font-size: 36px;
+            background-color: blue;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+        */
+        #sutitucion{
+            float: left; /*uno al lado del otro*/
+            margin: 5px;
+            width: 200px;
+            height: 150px;
+            font-size: 36px;
+            background-color: blue;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+
+    <script src="jquery-3.3.1.js"></script>
+
+    <script>
+        
+        $(document).ready(function(){
+            //var cerrar = document.getElementById("cerrar");
+            //el objeto va a estar a la escucha del evento click
+            //cerrar.addEventListener("click",cerrar_banner,false);
+
+            document.getElementById("cerrar").addEventListener("click",cerrar_banner,false)
+            
+            function cerrar_banner(){
+                //elimina el banner
+                $("#banner").remove();
+            }
+            //Selecciona todos los elementos de una pagina, 
+            //en base a su etiqueta y lo almacena en un array
+
+            /* con esto lo que aplicamnos es un selector descendiente,
+               Todas las imagenes que se encuentran en el div carrete
+            */
+            var imagenes = document.querySelectorAll("#carrete img");
+
+            for(var i=0; imagenes.length; i++){
+                imagenes[i].addEventListener("click",carrito,false);
+            }
+
+            function carrito(evento){
+                /*
+                    replaceWith
+                    Esta funcion lo que realiza es la sustitucion de un
+                    elemento html por otro.
+
+                    En este caso, estamos reemplazando la imagen por un div 
+                    que contiene un texto   
+
+                    Obtenemos quien genero el evento
+                    evento.target              
+                */
+                console.log(evento);
+                /*
+                if (evento.target==imagen1) {
+                    $("#imagen1").replaceWith("<div id='imagen1'>Agregado al carro</div>");
+                }
+                if (evento.target==imagen2) {
+                    $("#imagen2").replaceWith("<div id='imagen2'>Agregado al carro</div>");
+                }
+                if (evento.target==imagen3) {
+                    $("#imagen3").replaceWith("<div id='imagen3'>Agregado al carro</div>");
+                }
+                if (evento.target==imagen4) {
+                    $("#imagen4").replaceWith("<div id='imagen4'>Agregado al carro</div>");
+                }
+                */
+                //Esto lo verifique en la consola del navegador
+                //donde pude obtener el id del objeto
+                
+                console.log(evento.target.id);
+                var elemento = evento.target.id;
+                $("#"+elemento+"").replaceWith("<div id='sutitucion'>Agregado al carro</div>");    
+                
+                
+            }
+        });
+
+    </script>
+</head>
+<body>
+ 
+    <div id="banner">
+        Banner e prueba
+        <p id="cerrar">Cerrar</p>
+    </div>
+
+    <div id="carrete">
+        <img src="../../imgs/images1.jpg" id="imagen1">
+        <img src="../../imgs/images2.jpg" id="imagen2">
+        <img src="../../imgs/images3.jpg" id="imagen3">
+        <img src="../../imgs/images4.jpg" id="imagen4">
+    </div>
+
+</body>
+</html>

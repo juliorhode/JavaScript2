@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora</title>
+
+    <script>
+        var numero1 = parseInt(prompt("Introduce el primer numero"));
+        var numero2 = parseInt(prompt("Introduce el segundo numero"));
+        //alert( typeof(numero1) );
+        //alert( typeof(numero2) );
+        if(!isNaN(numero1) && !isNaN(numero2)){
+            var operacion = prompt("Que operacion deseas realizar... suma/resta/multiplicacion/division").toLowerCase();
+            if (operacion == "suma") {
+                alert( numero1 + numero2 );
+            }else if (operacion == "resta") {
+                alert( numero1 - numero2 );
+            }else if (operacion == "multiplicacion") {
+                alert( numero1 * numero2 );
+            }else if (operacion == "division") {
+                alert( numero1 / numero2 );
+            }else{
+                alert("Operacion invalida");
+            }
+        }else{
+            alert("No introdujo un valor numerico");
+        }
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

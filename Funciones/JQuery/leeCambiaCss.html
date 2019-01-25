@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        #primerParrafo{
+            background-color: red;
+        }
+    </style>
+    <script src="jquery-3.3.1.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            //Guardamos el valor de color de fondo en la variable
+            var colorFondo = $("#primerParrafo").css("background-color")
+            console.log(colorFondo);
+            //Modificar el atributo css por el id del elemento
+            $("#primerParrafo").css("background-color","#00F");
+            //Modificar el atributo css por el class del elemento
+            $("p.destacado").css("border","2px dotted red");
+        });
+    </script>
+
+</head>
+<body>
+    <p id="primerParrafo">Primer parrafo</p>
+    <p class="destacado">Segundo parrafo</p>
+    <p>Tercer parrafo</p>
+</body>
+</html>

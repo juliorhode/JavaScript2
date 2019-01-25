@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function suma (num1,num2) { 
+            alert("La suma es: " +(num1+num2));
+         }
+         function resta (num1,num2) { 
+            alert("La resta es: " +(num1-num2));
+         }
+         function multi (num1,num2) { 
+            alert("La multiplicacion es: " +(num1*num2));
+         }
+         function div (num1,num2) { 
+            alert("La division es: " +(num1/num2));
+         }
+         var operacion=prompt("que deseas hacer");
+         var operador1=parseInt(prompt("introduce el primer numero"));
+         var operador2=parseInt(prompt("introduce el segundo numero"));
+
+         if (operacion=="sumar") {
+            suma(operador1,operador2);
+         }else if (operacion=="resta") {
+            resta(operador1,operador2);
+         }else if (operacion=="multi") {
+            multi(operador1,operador2);
+         }else if (operacion=="div") {
+            div(operador1,operador2);
+         }else{
+             alert("Lo siento");
+         }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

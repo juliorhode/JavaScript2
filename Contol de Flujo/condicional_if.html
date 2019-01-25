@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <script>
+            /**
+             * ==   igual que
+             * !=   diferente que
+             * >    mayor que
+             * <    menor que
+             * >=   mayor igual que
+             * <=   menor igual que
+             * ===  estrictamente igual que (comprueba tipos)
+             * !==  estrictamente diferente que (comprueba tipos)
+             * &&   Y logico
+             * ||   O logico
+            **/
+            var precioCoche = 60000;
+            var dineroAhorrado = parseInt(prompt("Introduce cuanto tienes ahorrado"));
+            var edad = parseInt(prompt("Introduce tu edad por favor"));
+            var loteria = prompt("Te ha tocado la loteria");
+            if ( (dineroAhorrado >= precioCoche && edad >= 18) || loteria == "si" ) {
+                alert("Puedes comprar el coche");
+            }else{
+                if (edad<18) {
+                    alert("No puedes comprar el coche... No tienes la edad suficiente") ;    
+                }else{
+                    alert("No puedes comprar el coche... Aun te faltan " +  (precioCoche -dineroAhorrado));
+                }
+                
+            }
+
+            alert("Continuamos con la ejecucion del programa");
+        </script> 
+
+</head>
+<body>
+   
+</body>
+</html>

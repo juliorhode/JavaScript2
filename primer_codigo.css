@@ -1,0 +1,15 @@
+body{
+    background-color: darkblue;
+}
+h1{
+    color: white;
+    border-top: 1px solid #fff;
+    border-bottom : 1px solid #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+p{
+    color: rgb(241, 245, 6);
+    font-size: 2em;
+}

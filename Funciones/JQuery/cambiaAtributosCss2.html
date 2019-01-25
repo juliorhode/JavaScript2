@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        .destacados{
+            /*background-color: red;*/
+            color: red;
+            font-weight: bold;
+            margin-left: 25px;
+
+        }
+        .destacaEjemplo{
+            /*background-color: red;*/
+            color: teal;
+            font-weight: bold;
+            margin-left: 25px;
+
+        }
+        a{
+            display: block;
+            margin-bottom: 2px;
+            font-size: 24px;
+        }
+        table{
+            text-align: center;
+            border: none;
+        }
+        td{
+            border: none;
+        }
+        #contieneEnlaces{
+            position: absolute;
+            left: 30px;
+            top: 80px;
+            width: 300px;
+        }
+    </style>
+    
+    <script src="jquery-3.3.1.js"></script>
+
+    <script>
+    /*
+        addClass()      --> agregar un estilo de clase
+        toggleClass()   --> dota a un elemento un comportamiento de tipo on/off (unimos las otras dos en una sola)
+        removeClass()   --> elimina un estilo de clase
+    
+    */
+        $(document).ready(function(){
+            /*
+                a[href^='http//']
+                Esto apunta a todos los enlaces "a" pero que
+                continuen con la instruccion href=http para 
+                asegurarnos que es un enlace externo
+
+                $("a[href^='https://']").addClass("destacados");
+            */
+            
+            document.getElementById("cursos").addEventListener("click",resaltaCursos,false);
+            document.getElementById("ejemplos").addEventListener("click",resaltaEjemplos,false);
+            
+            function resaltaCursos(){
+                $(".cursos").toggleClass("destacados");
+            }
+            function resaltaEjemplos(){
+                $(".ejemplo").toggleClass("destacaEjemplo");
+            }
+        });
+
+    </script>
+</head>
+<body>
+    <div id="contieneEnlaces">
+        <a href="http://www.pildorasinformaticas.com" target="_blank" class="cursos">
+        PildorasInformaticas
+        </a>
+        <br>
+        <a href="http://www.google.com" target="_blank">
+        Google
+        </a>
+        <br>
+        <a href="https://www.youtube.com" target="_blank" class="cursos">
+        Cursos Youtube
+        </a>
+        <br>
+        <a href="eliminarReemplazar.html" target="_blank" class="ejemplo">
+        Elimina y Reemplaza
+        </a>
+        <br>
+        <a href="https://www.google.ces" target="_blank">
+        Noticias Google
+        </a>
+        <br>
+        <a href="../calculadora2.html" target="_blank" class="ejemplo">
+        Calculadora
+        </a>                
+    </div>
+    <table width="100%" border="1">
+        <tr>
+            <td>Cursos destacados &nbsp;&nbsp;
+                <input type="checkbox" value="Cursos" id="cursos">
+            </td>
+            <td>Cursos Ejemplo &nbsp;&nbsp;
+                <input type="checkbox" value="Ejemplos" id="ejemplos">
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
