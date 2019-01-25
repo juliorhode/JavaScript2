@@ -32,16 +32,55 @@
             //Identificamos todos los botones en un array
             var botones  = document.querySelectorAll("input");
             
-            for(var i = 0; botones.length; i++){
-                botones[i].addEventListener("click",aumentar,false);
-                botones[i].addEventListener("click",disminuye,false);
-                
+            for(var i = 0;  i< botones.length; i++){
+                //console.log(botones[i].id);
+                 if (botones[i].id == "aumenta1" || botones[i].id == "aumenta2" || botones[i].id == "aumenta3") {
+                    botones[i].addEventListener("click",aumentar,false);
+                 }else{
+                    botones[i].addEventListener("click",disminuir,false);
+                 }
             }
 
             //Variable para almacenar el valor de la fuente
-            var tamanoFuente;
-            var zona;
+            var tamanoFuente=0;
+            var zona="";
 
+            function aumentar(e) {
+                //console.log(e.target.id);
+                if (e.target.id == "aumenta1") {
+                    //alert("noticia 1");
+                    zona="#noticia1";
+                }else if (e.target.id == "aumenta2") {
+                    //alert("noticia 2");
+                    zona="#noticia2";
+                }else if (e.target.id == "aumenta3") {
+                    //alert("noticia 3");
+                    zona="#noticia3";
+                }
+                //console.log(zona);
+                tamanoFuente = parseInt( $(zona).css("font-size") );
+                //console.log(tamanoFuente);
+                $(zona).css("font-size",tamanoFuente+=2);
+
+            }
+            function disminuir(e) {
+                //console.log(e.target.id);
+                if (e.target.id == "disminuye1") {
+                    //alert("noticia 1");
+                    zona="#noticia1";
+                }else if (e.target.id == "disminuye2") {
+                    //alert("noticia 2");
+                    zona="#noticia2";
+                }else if (e.target.id == "disminuye3") {
+                    //alert("noticia 3");
+                    zona="#noticia3";
+                }
+                //console.log(zona);
+                tamanoFuente = parseInt( $(zona).css("font-size") );
+                //console.log(tamanoFuente);
+                $(zona).css("font-size",tamanoFuente-=2);
+            }
+/*
             function aumentar(objeto){
                 console.log(objeto.target.id);
                 if (objeto.target == aumenta1) {
@@ -58,7 +97,8 @@
                 $(zona).css("font-size",tamanoFuente += 2);
                 
             }
-
+*/
+/*
             function disminuye(objeto){
                 //console.log(objeto.target.id);
                 if (objeto.target == disminuye1) {
@@ -75,7 +115,7 @@
                 $(zona).css("font-size",tamanoFuente -= 2);
                 
             }
-     
+ */    
         });
 
     </script>
