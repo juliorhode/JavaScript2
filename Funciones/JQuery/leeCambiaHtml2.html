@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    <style>
+        img{
+            width:200px; 
+            height:200px;
+            padding: 10px;
+        }
+        table{
+            text-align: center;
+            border: none;
+            margin: auto;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+
+    <script src="jquery-3.3.1.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            //con esto identificamos los elementos por su etiqueta
+            var imagenes = document.querySelectorAll("img");
+            for(var i = 0; i < imagenes.length; i++){
+                imagenes[i].addEventListener("mouseover",cambiar,false);
+                imagenes[i].addEventListener("mouseout",restaurar,false);
+            }
+        });
+
+        function cambiar(e) {
+            //console.log(e.target);
+            if (e.target == img1) {
+                $(e.target).attr("src","../../imgs/images3.jpg");
+            }else if (e.target == img2) {
+                $(e.target).attr("src","../../imgs/images4.jpg");
+            }else if (e.target == img3) {
+                $(e.target).attr("src","../../imgs/images5.jpg");
+            }
+        }
+
+        function restaurar(e){
+            if (e.target == img1) {
+                $(e.target).attr("src","../../imgs/arbol.jpg");
+            }else if (e.target == img2) {
+                $(e.target).attr("src","../../imgs/images1.jpg");
+            }else if (e.target == img3) {
+                $(e.target).attr("src","../../imgs/images2.jpg");
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <h1>Galeria de Imagenes</h1>
+    <table border="0">
+        <tr>
+            <td><img src="../../imgs/arbol.jpg" id="img1" ></td>
+            <td><img src="../../imgs/images1.jpg" id="img2" ></td>
+            <td><img src="../../imgs/images2.jpg" id="img3" ></td>
+        </tr>
+    </table>
+    
+</body>
+</html>

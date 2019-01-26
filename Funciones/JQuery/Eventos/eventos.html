@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        h1{
+	        text-align:center;
+        }  
+        body{
+            background-color:#334873;
+            color:#FFF;
+        }
+        #principal{
+	        width:50%;
+            margin:auto;
+        }
+        a{
+            color:#FFF;
+            font:bold 16px Verdana, Geneva, sans-serif;
+        } 
+    </style>
+
+    <script src="../jquery-3.3.1.js"></script>
+
+    <script>
+        $(document).ready(function () { 
+            
+            //Todo lo que este dentro de HTML respondera al evento
+            $("html").dblclick(function () {
+                alert("Haz hecho doble click");
+            });
+
+            $("a").mouseover(function(){
+                var mensaje="<p>Paso por encima el raton</p>"
+                $("#principal").append(mensaje);
+            });
+
+            $("a").mouseout(function(){
+                var mensaje="<p>Haz quitado el raton</p>"
+                $("#principal").append(mensaje);
+            });
+
+            $("#el_boton").click(function(){
+                $(this).val("No hagas click");
+            });
+
+            $("#el_campo").focus(function(){
+                $(this).val("Escriba aqui!!!");
+            });
+            
+         });
+        
+
+    </script>
+
+</head>
+<body>
+        <div id="principal">
+
+            <h1>Introduccion a eventos</h1>
+            
+            <p><a href="#">Un link</a></p>
+            
+            <form action="#" method="get">
+                <fieldset>
+                    <legend>Formulario</legend>
+                    
+                    <p>
+                        <input name="button" type="button" id="el_boton" value="Un boton">
+                    </p>
+                    <p>
+                        <input name="textfield" type="text" id="el_campo">
+                    </p>
+                </fieldset>
+            </form>
+        
+        </div>
+        
+</body>
+</html>

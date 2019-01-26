@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        img{
+            width: 200px;
+            height: 120px;
+            margin: 0 5px;
+        }
+        #contenedor{
+            width: 90%;
+            margin: auto;
+        }
+        #boton{
+            margin: 50px 60px;
+        }
+
+    </style>
+
+    <script src="jquery-3.3.1.js"></script>
+
+    <script>
+        
+        $(document).ready(function () { 
+            document.getElementById("accion").addEventListener("click",cambiar,false);
+         });
+    
+         function cambiar() { 
+             //$("img").fadeOut(1000).fadeIn(1000).width("250").height("180");
+             $("img").each(function() { 
+                 $(this).fadeOut(1000).fadeIn(1000).width("250").height("180");
+              });
+          }
+    </script>
+
+
+</head>
+<body>
+    <div id="contenedor">
+        <img src="../../imgs/images1.jpg" >
+        <img src="../../imgs/images2.jpg" >
+        <img src="../../imgs/images3.jpg" >
+        <img src="../../imgs/images4.jpg" >
+    </div>
+    <div id="boton">
+        <input type="button" value="Accion" id="accion">
+    </div>    
+</body>
+</html>

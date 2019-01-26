@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    <style>
+        #contenedor1 {
+            position: absolute;
+            left: 67px;
+            top: 77px;
+            width: 200px;
+            height: 180px;
+            z-index: 1;
+        }
+        /*
+            z-index
+            Esto lo que hace es indicar el orden en que
+            los elementos se superponen. Mientras el valor es 
+            mayor, es el que va a estar mas hacia el frente
+            y el de menor valor, hacia atras
+        */
+        #contenedor2 {
+            position: absolute;
+            left: 210px;
+            top: 26px;
+            width: 443px;
+            height: 297px;
+            z-index: 2;
+        }
+        ul{
+            /*
+                con est se coloca o elimina el elemento que se 
+                coloca para listar
+            */
+	        list-style-type: none;
+        }
+
+        li{
+            margin:10px 0;
+            font-size:24px;
+            width:95px;
+            
+        }
+        .destacar{
+            background-color:rgb(2, 9, 112);
+            color:#FFF;
+            border-radius: 5px;
+            box-shadow: rgba(255, 3, 3, 0.726) 2px 2px;
+        }
+        img{
+            width: 200px;
+            height: 200px;
+            border-radius: 15px;  
+            /*box-shadow: black 10px 10px;*/
+        }
+
+    </style>
+
+    <script src="jquery-3.3.1.js"></script>
+
+    <script>
+
+        $(document).ready(function(){
+            //Identificamos los elementos con etiqueta de lista
+            var lista = document.querySelectorAll("li");
+            for(var i = 0; i < lista.length; i++){
+                lista[i].addEventListener("mouseover",imagen,false);
+                lista[i].addEventListener("mouseout",restaura,false);
+            }
+        });
+        var elemento;
+        function imagen(e){ 
+            //console.log(e.target.id);
+            /*
+                Determinamos que elemento genero el evento
+                lo alamcenamos en una variable para luego
+                ser utiliazada en jquery
+            */
+            elemento = "#" + e.target.id;
+            $(elemento).addClass("destacar");
+            $("img").attr("src","../../imgs/images"+ parseInt(e.target.id) +".jpg");
+            //console.log( parseInt(e.target.id) );
+            
+            
+        }
+        function restaura(e){ 
+            elemento = "#" + e.target.id;
+            $("img").removeAttr("src");
+            $(elemento).removeClass("destacar");
+        }
+
+    </script>
+</head>
+<body>
+    
+    <div id="contenedor1">
+        <ul>
+            <!--
+                Los elementos de la lista, el id los coloque
+                como numeros para poder realizar en las funciones
+                la asignacion de las imagenes de una forma mas dinamica
+            -->
+            <li id="1_elem">Imagen 1</li>
+            <li id="2_elem">Imagen 2</li>
+            <li id="3_elem">Imagen 3</li>
+            <li id="4_elem">Imagen 4</li>
+        </ul>
+    </div>
+
+    <div id="contenedor2">
+        <img src="">
+    </div>
+    
+</body>
+</html>

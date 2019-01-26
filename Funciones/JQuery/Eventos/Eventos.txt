@@ -1,0 +1,30 @@
+Eventos del raton
+------------------
+click
+dblclick
+mousedown --> pulsa el boton (pulsado)
+mouseup --> cuando se deja de pulsar el boton
+mouseover
+mouseout
+mousemove
+
+Eventos del teclado
+--------------------
+keypress
+keydown
+keyup
+
+Eventos del documento o ventana
+--------------------------------
+load --> cuando carga la pagina
+resize --> cuando la redimensionas
+scroll --> cuando se mueve la barra de desplazamiento
+unload --> cuando cierras la pagina
+
+Eventos formulario
+-------------------
+submit --> cuando se envia el formulario
+reset --> cuando borras el formulario
+change --> cuando lo cambias
+focus --> cuando es seleccionado un elemento
+blur --> cuando pierde la seleccion

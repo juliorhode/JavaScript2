@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        #imagenes{
+            margin:auto;
+        }
+        img{
+            width: 180px;
+            height: 180px;
+        }
+        #mensaje_img1 {
+            position: absolute;
+            left: 330px;
+            top: 300px;
+            width: 300px;
+            height: 115px;
+            background-color: rgb(255, 196, 0);
+            font-size: 24px;
+            font-weight: bold;
+            padding: 25px;
+            border: dotted 2px rgb(6, 6, 145);
+        }
+
+    </style>
+
+    <script src="../jquery-3.3.1.js"></script>
+
+    <script>
+        $(document).ready(function () { 
+            
+            $("#mensaje_img1").hide();
+
+            //$("#imagen1").hover(mensaje_on,mensaje_off);
+            $("#imagen1").hover(function(){
+                $("#mensaje_img1").show();
+            },function(){
+                $("#mensaje_img1").hide();
+            });
+
+         });
+         /*
+        function mensaje_on() { 
+            $("#mensaje_img1").show();
+        }
+        function mensaje_off() { 
+            $("#mensaje_img1").hide();
+        }
+        */
+    </script>
+
+</head>
+<body>
+    <div id="mensaje_img1">
+        Noche de luna llena...
+    </div>
+
+    <div id="imagenes">
+        <img src="../../../imgs/images1.jpg" id="imagen1">
+        <img src="../../../imgs/images2.jpg" id="imagen2">
+        <img src="../../../imgs/images3.jpg" id="imagen3">
+        <img src="../../../imgs/images4.jpg" id="imagen4">
+    </div>
+</body>
+</html>
