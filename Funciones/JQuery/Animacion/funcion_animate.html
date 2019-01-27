@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img{
+            opacity:0.2;
+        }
+    </style>
+    <script src="../jquery-3.3.1.js"></script>
+    <script>
+        //Esta funcion permite animar cualquier propiedad CSS
+        //que admita valores numericos
+        $(document).ready(function() {
+            /*
+            $("#imagen").click(function(){
+                $(this).animate(
+                    {
+                        marginLeft:"+=150px"
+                    },1000);
+            });
+            */
+            $("img").mouseover(function(){
+                $(this).animate(
+                    {
+                        opacity:1
+                    },1000);
+            });
+            $("img").mouseout(function(){
+                $(this).animate(
+                    {
+                        opacity:0.2
+                    },1000);
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+    <img src="../../../imgs/open.png" width="100" height="100" id="imagen">
+</body>
+</html>
