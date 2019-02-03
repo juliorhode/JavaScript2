@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        #menu {
+            width: 70px;
+            background-color: rgb(110,138,195);
+            padding: 20px 20px 0 20px;
+            position: absolute;
+            left: -92px;
+            z-index: 100;
+        }
+        #menu img {
+            margin-bottom: 20px;
+            border: 1px solid rgb(0,0,0);
+        }
+        h1{
+            text-align:center;
+        }
+        p{
+            margin-left:150px;
+        }
+    </style>
+
+    <script src="../jquery-3.3.1.js"></script>
+    <script src="../jquery.easing.1.3.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            //funcion pasar el raton por encima y cuando salga
+
+            //.stop() esto elimina la cola de eventos. y no
+            //vuelve a realizarlo de nuevo hasta que no termine
+            //de procesar el evento anterior
+            $("#menu").hover(function(){
+                $(this).stop().animate({
+                    left:"0px"
+                },500,"easeInSine");//termina animate
+            },
+            function(){
+                $(this).stop().animate({
+                    left:"-92px"
+                },1500,"easeOutBounce");//termina animate
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <div id="menu">
+        <img src="../../../imgs/images1.jpg" width="70" height="70" alt="blue">
+        <img src="../../../imgs/images2.jpg" width="70" height="70" alt="green">
+        <img src="../../../imgs/images3.jpg" width="70" height="70" alt="orange">
+        <img src="../../../imgs/images4.jpg" width="70" height="70" alt="purple">
+        <img src="../../../imgs/images5.jpg" width="70" height="70" alt="red">
+      </div>
+      
+      <h1>Menu deslizantes</h1>
+      <p>Pasa el raton por encima de la pestaña de la izquierda</p>    
+</body>
+</html>

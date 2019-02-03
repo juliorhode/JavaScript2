@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fotos con FancyBox</title>
+    <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="../../JQuery/fancybox/jquery.fancybox-1.3.4.css">
+
+    <script src="../jquery-1.6.3.min.js"></script>
+    <script src="../../JQuery/fancybox/jquery.fancybox-1.3.4.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //apuntar a las imagenes
+            $("#galeria a").fancybox({
+                overlayColor          : '#797e79', //Color de la superposición
+                overlayOpacity        : .9, //Opacidad de la superposición
+                transitionIn          : 'elastic',//El tipo de transición (elastico)
+                transitionOut         : 'fade',//El tipo de transición (desvanecimiento)
+                titlePosition         : 'outside',//La posición del título (fuera)
+                cyclic                : true,//as galerías serán cíclicas, permitirá presionar siguiente / atrás
+                speedIn               : 1000, //Velocidad transiciones elásticas
+                speedOut              : 1000, //Velocidad del desvanecimiento
+                enableEscapeButton    :true//Alternar si presiona el botón Esc cierra FancyBox
+            });
+
+fancybox
+            
+        });
+    </script>
+</head>
+
+<body>
+    <div class="cabecera">
+        <img src="../../../imgs/pildoras_1.png">
+        <p class="logo">Galeria con FancyBox</p>
+    </div>
+    <div class="contenido">
+        <div class="principal">
+            <h1>Fotos</h1>
+            <div id="galeria">
+                <a href="../../../imgs/paisaje1.JPG" title="Bonito paisaje nocturno"><img src="../../../imgs/paisaje1.JPG"
+                        width="70" height="70" alt="Paisaje nocturno"></a>
+                <a href="../../../imgs/paisaje2.jpg" title="Palemeras al atradecer"><img src="../../../imgs/paisaje2.JPG"
+                        width="70" height="70" alt="Palemeras"></a>
+                <a href="../../../imgs/paisaje3.jpg" title="Montañas"><img src="../../../imgs/paisaje3.JPG" width="70"
+                        height="70" alt="Montañas"></a>
+                <a href="../../../imgs/paisaje4.jpg" title="Playa al atardecer"><img src="../../../imgs/paisaje4.JPG"
+                        width="70" height="70" alt="Playa"></a>
+            </div>
+        </div>
+</body>
+
+</html>

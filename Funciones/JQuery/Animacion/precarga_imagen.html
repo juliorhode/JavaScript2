@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <script src="../jquery-3.3.1.js"></script>
+
+    <script>
+        
+        $(document).ready(function(){
+            //Con esto nos aseguramos que ya este cargada la imagen
+            /* ESTO ES CON UNA SOLA IMAGEN
+            var foto_nueva = new Image();
+            foto_nueva.src = "../../../imgs/images2.jpg";
+
+            $("#foto").hover(function(){
+                $(this).attr("src", foto_nueva.src)
+            },
+            function(){
+                $(this).attr("src","../../../imgs/images1.jpg")
+            });
+            */
+
+            //Array con las fotos
+            var fotos = [
+                "../../../imgs/arbol.jpg",
+                "../../../imgs/close.png",
+                "../../../imgs/open.png",
+            ];
+
+            var imagenes = [];
+
+            for(var i = 0; i < fotos.length; i++){
+                imagenes[i] = new Image();
+                imagenes[i].src = fotos[i];
+            }
+
+            $("img").each(function(){
+               $(this).hover(cambiar,restaurar);
+            });
+
+            function cambiar(e) { 
+            //detectamos a que imagen estoy
+            console.log(e.target.id);
+            if (e.target.id == "foto1") {
+                $("#foto1").attr("src",imagenes[0].src);
+            }else if (e.target.id == "foto2") {
+                $("#foto2").attr("src",imagenes[1].src);
+            }else if (e.target.id == "foto3") {
+                $("#foto3").attr("src",imagenes[2].src);
+            }
+            
+            
+        }
+        function restaurar(e) { 
+            if (e.target.id == "foto1") {
+                $("#foto1").attr("src","../../../imgs/images1.jpg");
+            }else if (e.target.id == "foto2") {
+                $("#foto2").attr("src","../../../imgs/images2.jpg");
+            }else if (e.target.id == "foto3") {
+                $("#foto3").attr("src","../../../imgs/images3.jpg");
+            }
+        }
+        });
+
+        
+    </script>
+</head>
+<body>
+    <table border="0">
+        <tr>
+            <td><img src="../../../imgs/images1.jpg" width="300" height="200" id="foto1"></td>
+            <td><img src="../../../imgs/images2.jpg" width="300" height="200" id="foto2"></td>
+            <td><img src="../../../imgs/images3.jpg" width="300" height="200" id="foto3"></td>
+        </tr>
+    </table>
+</body>
+</html>
