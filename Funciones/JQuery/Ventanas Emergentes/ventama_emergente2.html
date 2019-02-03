@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="../jquery-3.3.1.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            var propiedades = "left=300, width=800";
+            var ventana = open("http://www.google.com","Google",propiedades);
+            
+            $("#botonCerrar").click(function(e){
+                //anular el comportamiento por defecto del vinculo
+                e.preventDefault();
+                ventana.close();
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <a href="http://www.google.es" id="mivinculo">
+        Ir a Google
+    </a>
+    <br><br>
+    <a href="" id="botonCerrar">Cerrar</a>
+</body>
+
+</html>

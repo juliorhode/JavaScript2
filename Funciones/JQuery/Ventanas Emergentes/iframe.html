@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    <style>
+        body{
+            background-color: darkblue;
+        }
+        h1{
+            text-align: center;
+            color: #fff;
+            font-weight: bold;
+        }
+        #contenedor{
+            
+            background-color: darkblue;
+            width           : 800px;
+            height          : 400px;
+            margin          : auto;
+            /*
+            border-style: solid;
+            border-color: rgb(255, 230, 0);
+            border-width: 5px;
+            border-radius: 5px;
+            */
+        }
+        a{
+            color: #fff;
+        }
+    </style>
+    
+    <script src="../jquery-3.3.1.js"></script>
+
+    <script>
+        $(document).ready(function(e){
+            $("#pulsar").click(function(e){
+                e.preventDefault();
+                $("#marco").attr("src","http://127.0.0.1:5500/");
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <h1>Iframes</h1>
+    <!-- Este enlace aunque esta vacio, hay que anular su 
+        comportamiento con preventDefault()
+    -->
+    <a href="" id="pulsar">Pulsa aqui</a>
+    <br><br>
+    <div id="contenedor">
+        <!-- <iframe src="http://127.0.0.1:5500/" width="770" height="390"></iframe> -->
+        <iframe src="" width="770" height="390" id="marco" frameborder="0"></iframe>
+    </div>
+</body>
+
+</html>
