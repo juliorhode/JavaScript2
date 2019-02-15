@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- 
+        Servidor para pruebas en Ajax
+        https://reqres.in/ 
+
+        Explicacion
+        https://uniwebsidad.com/libros/fundamentos-jquery/capitulo-7/metodos-ajax-de-jquery
+    -->
+
+<script>
+    $(document).ready(function(){
+        $("#solicita").click(function (e) { 
+            e.preventDefault();
+            //console.log(e.keyCode);
+            var page = 1;
+            $.ajax({
+                // la URL para la petición
+                
+                url : 'https://reqres.in/api/users',
+                type : 'GET',
+                data:{
+                    page : page
+                },
+                success : function(e) {
+
+                    var lista = $("#prueba");
+       
+                    $.each( e.data, function (indice, elemento) { 
+                        
+                            lista.append(
+                                //'<p>' + elemento +  '</p>'
+                                "<div> <p>" + elemento.first_name + " " + elemento.last_name +  "</p></div>" +
+                                "<div> <img src='" + elemento.avatar + "'></div>"
+                                
+                            );
+                        
+                    });
+       
+                    
+                },
+                // código a ejecutar si la petición falla;
+                error : function(a, b, c) {
+                    // alert('Disculpe, existió un problema ');
+                    // console.log(a);
+                    // console.log(a.status);
+                    // console.log(b);
+                    // console.log(c);
+                    // console.log( b + " " + a.status + " " + c );
+                    
+                    $("#prueba").append("<h1>" + b + " " + a.status + " " + c  + "</h1>");
+                },async:false
+            });
+        });
+        
+    });
+</script>
+
+</head>
+
+<body>
+    <input type="button" value="Solicitar" id="solicita">
+
+        <div id="prueba" style="height: 100px; width: 300px; margin: 50px">
+
+        </div>
+
+        
+</body>
+
+</html>
