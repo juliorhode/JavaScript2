@@ -25,7 +25,7 @@
       text-align:center;
     }
 
-
+    
   </style>
   <script src="../jquery-3.3.1.js"></script>
 
@@ -33,43 +33,79 @@
 
     $(document).ready(function () {
         $("#comprobar").click(comprobar_datos);
+
+            function comprobar_datos() {
+          //alert( $("#nombre").val() );
+          //var nombre = $("#nombre").val();
+          //alert("El nombre es: " + nombre);
+
+          //Vamos a acceder a todos los elementos de tipo text
+          /*
+          $(":text").each(function(){
+              alert( $(this).val() );
+          });
+          */
+          /*
+          if ($("#masculino").prop( "checked" )) {
+            alert("eres hombre");
+          }else if ($("#femenino").prop( "checked" )){
+            alert("eres mujer");
+          }
+
+          $(":checkbox").each(function(){
+            if ($(this).prop( "checked" )) {
+              alert("Te gusta " +  $(this).val() );
+            }
+              
+          });
+          */
+
+          $("#form_datos").submit(function(){
+            if ($("#nombre").val() == "") {
+                alert("Por favor completa el nombre");
+                $("#nombre").focus();
+                return false;
+            }
+
+          });
+
+          
+
+        }
+        $("#edad").blur(function(){
+              //almacenamos el valor del cuadro edad
+              var edad_usuario = $(this).val();
+              if(isNaN(edad_usuario)){
+                alert("Debe introducir un valor numerico");
+                $(this).focus();
+                
+              }
+          });
+        $(":radio").click(function(){
+          alert($(this).val());
+        });
+
+        var aficiones = new Array();
+        var i = 0;
+        $(":checkbox").click(function(){
+          //Almacenamos el valor en el array
+          aficiones[i]=$(this).val();
+          //alert("Posicion "+ i + " " + aficiones[i]);
+          
+          //Agrega contenido en el contenedor con un salto de linea
+          $("#contenido_aficiones").append(aficiones[i]).append("<br>");
+          i++;
+        });
+
+        $("#pais").change(function(){
+          //se activa al cambiar el valor
+          alert( $(this).val() );
+        });
+
+        
     });
 
-    function comprobar_datos() {
-      //alert( $("#nombre").val() );
-      //var nombre = $("#nombre").val();
-      //alert("El nombre es: " + nombre);
-
-      //Vamos a acceder a todos los elementos de tipo text
-      /*
-      $(":text").each(function(){
-          alert( $(this).val() );
-      });
-      */
-      /*
-      if ($("#masculino").prop( "checked" )) {
-        alert("eres hombre");
-      }else if ($("#femenino").prop( "checked" )){
-        alert("eres mujer");
-      }
-
-      $(":checkbox").each(function(){
-        if ($(this).prop( "checked" )) {
-          alert("Te gusta " +  $(this).val() );
-        }
-          
-      });
-      */
-
-      $("#form_datos").submit(function(){
-        if ($("#nombre").val() == "") {
-            alert("Por favor completa el nombre");
-            return false;
-        }
-      });
-
-
-    }
+    
   </script>
 </head>
 
@@ -81,7 +117,7 @@
         <tr>
           <td>Nombre:</td>
           <td><label for="nombre"></label>
-            <input type="text" name="nombre"  id="nombre" required value="Escribe tu nombre"></td>
+            <input type="text" name="nombre"  id="nombre" ></td>
         </tr>
         <tr>
           <td>Apellido:</td>
@@ -156,6 +192,10 @@
         </tr>
       </table>
     </form>
+  </div>
+
+  <div id="contenido_aficiones">
+
   </div>
 
 </body>
