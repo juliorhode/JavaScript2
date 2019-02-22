@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("#panel-tablaDias").hide();
+            $("#tipoMes").change(function(){
+                //Obtenemos el valor del mes seleccionado
+                var seleccion = $("#tipoMes").val();
+                if (seleccion == 0) {
+                    $("#tablaDias").empty();
+                    $("#panel-tablaDias").hide();
+                }else{
+                    $("#panel-tablaDias").show();
+                    //Obtenemos la cantidad de dias del mes, invocando la funcion mes()
+                    var diasMes = mes(seleccion);
+                }
+                //Con el valor obtenido de los dias, generamos la tabla
+                generaTabla(diasMes);
+            });
+        });
+
+            /******************************************************************************************
+            * Esta funcion se encarga de determinar la cantidad de dias que tiene el mes seleccionado *
+            *******************************************************************************************/
+            function mes (numeroMes){
+                /*Obtenemos el año actual*/
+                var ano = new Date().getFullYear();
+                /*Recibimos la cantidad de dias del mes*/
+                var numeros = new Date( ano,numeroMes,0).getDate();
+                /*Retornamos la cantidad de dias*/
+                return numeros;
+            }
+             
+             
+            /**********************************************************************************************
+            * Esta fncion se encarga de construir dinamicamente, la tabla calendario del mes seleccionado *
+            **********************************************************************************************/
+            function generaTabla(diasMes){
+                /*Vacioamos el contenido de la tabla*/
+                $("#tablaDias").empty();
+                /*Iniciamos la apertura de la tabla*/
+                $("#tablaDias").append("<table><tr>");
+                for (var i=1; i  < diasMes + 1; i++){
+                    $("#tablaDias").append("<td><td style='padding: 10px;'><input type='checkbox' value='" + i + "'><label>"+i+"</label></td>");
+                    /*esto se realiza para cerrar la fila cada 7 dias y aperturar una nueva Fila*/
+                    switch (i) {
+                        case 7:
+                            $("#tablaDias").append('</tr><tr>');
+                        break;
+                        case 14:
+                            $("#tablaDias").append('</tr><tr>');
+                        break;
+                        case 21:
+                            $("#tablaDias").append('</tr><tr>');
+                        break;
+                        case 28:
+                            $("#tablaDias").append('</tr><tr>');
+                        break;
+                        default:
+                            break;
+                    }
+                    
+                }
+                /*Cerramos la tabla*/
+                $("#tablaDias").append("</table>");
+            }
+
+       
+    </script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="col-md-4">
+                            <label for="txtCedulaEspecialista">Cedula Especialista:</label>
+                            <input type="text" class="form-control" id="txtCedulaEspecialista">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="txtNombreEspecialista">Nombre Especialista</label>
+                            <input type="text" class="form-control" id="txtNombreEspecialista">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="txtEspecialidadEspecialista">Especialidad</label>
+                            <input type="text" class="form-control" id="txtEspecialidadEspecialista">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="radio-inline">
+                                <div class="col-md-12">
+                                    <label><input name="otpTipoAusentismo" id="otpContinuo" type="radio" value="conti">Continuo</label>
+                                </div>
+                                <br><br>
+                                <div class="col-md-12">
+                                    <label><input name="otpTipoAusentismo" id="otpIntercalado" type="radio" value="inter">Intercalado</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                <label for="txtFechaInicio">Fecha Inicio</label>
+                                <input type="button" class="form-control" id="txtFechaInicio">
+                            </div>
+                            <div class="col-md-12">
+                                <label for="txtFechaFin">Especialidad</label>
+                                <input type="button" class="form-control" id="txtFechaFin">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="col-md-4">
+                                <label for="tipoMes">Tipo de Solicitud:</label><br>
+                                <select name='tipoMes' class='form-control' id='tipoMes'>
+                                    <!-- <option value=""></option> -->
+                                    <option value="0"></option>
+                                    <option value="1">Enero</option>
+                                    <option value="2">Febrero</option>
+                                    <option value="3">Marzo</option>
+                                    <option value="4">Abril</option>
+                                    <option value="5">Mayo</option>
+                                    <option value="6">Junio</option>
+                                    <option value="7">Julio</option>
+                                    <option value="8">Agosto</option>
+                                    <option value="9">Septiembre</option>
+                                    <option value="10">Octubre</option>
+                                    <option value="11">Noviembre</option>
+                                    <option value="12">Diciembre</option>
+                                </select>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="panel panel-default" id="panel-tablaDias">
+                                    <div class="panel-body" id="tablaDias">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="comment">Comment:</label>
+                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
