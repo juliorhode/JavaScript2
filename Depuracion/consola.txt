@@ -1,0 +1,1 @@
+la consola de los navegadores se abre con f12.

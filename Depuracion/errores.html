@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+
+    <script src="../Funciones/JQuery/jquery-3.3.1.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            console.log("hola");
+
+            $("#texto").keyup(function () {
+                console.log("evento keyup");
+                var texto = $(this).val();
+                console.log("Texto escrito: " + texto);
+                
+
+            });
+        });
+
+
+    </script>
+</head>
+
+<body>
+    <input type="text" name="texto" id="texto">
+</body>
+
+</html>
