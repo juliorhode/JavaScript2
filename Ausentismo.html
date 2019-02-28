@@ -11,7 +11,22 @@
 
     <script>
         $(document).ready(function(){
+            $("#panelFecha").hide();
+            $("#panelCalendario").hide();
+            var txtSemana = new Array();
             $("#panel-tablaDias").hide();
+
+            $("input:radio[name=otpTipoAusentismo]").click(function(){
+                var tipoAusentismo = $('input:radio[name=otpTipoAusentismo]:checked').val();
+                if (tipoAusentismo=="conti") {
+                    $("#panelFecha").show();
+                    $("#panelCalendario").hide();
+                }else{
+                    $("#panelFecha").hide();
+                    $("#panelCalendario").show();
+                }
+            });
+
             $("#tipoMes").change(function(){
                 //Obtenemos el valor del mes seleccionado
                 var seleccion = $("#tipoMes").val();
@@ -23,58 +38,82 @@
                     //Obtenemos la cantidad de dias del mes, invocando la funcion mes()
                     var diasMes = mes(seleccion);
                 }
+                txtSemana = diaSemana(diasMes,seleccion);
+                console.log("Este es el array: " +txtSemana[24]);
                 //Con el valor obtenido de los dias, generamos la tabla
-                generaTabla(diasMes);
+                generaTabla(diasMes,txtSemana);
             });
         });
-
-            /******************************************************************************************
-            * Esta funcion se encarga de determinar la cantidad de dias que tiene el mes seleccionado *
-            *******************************************************************************************/
-            function mes (numeroMes){
-                /*Obtenemos el año actual*/
-                var ano = new Date().getFullYear();
-                /*Recibimos la cantidad de dias del mes*/
-                var numeros = new Date( ano,numeroMes,0).getDate();
-                /*Retornamos la cantidad de dias*/
-                return numeros;
+        function diaSemana(dia,mes){
+            
+            var ano = new Date().getFullYear();
+            // var fecha = new Date(ano,mes-1,1);
+            // var diaSemana = ["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"];
+            // var txtSemana = diaSemana[fecha.getDay()];
+            var diaSemana = ["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"];
+            var fecha;
+            var txtSemana = new Array();
+            for(var i=1; i < dia + 1;i++){
+                fecha = new Date(ano,mes-1,i);
+                fechaCorta = i+"/"+mes+"/"+ano;
+                //console.log(fechaCorta + "-->" + diaSemana[fecha.getDay()]);
+                txtSemana.push( diaSemana[fecha.getDay()] );
             }
+            console.log(txtSemana);
+            
+            
+            return txtSemana;
+        }
+        /******************************************************************************************
+        * Esta funcion se encarga de determinar la cantidad de dias que tiene el mes seleccionado *
+        *******************************************************************************************/
+        function mes (numeroMes){
+            /*Obtenemos el año actual*/
+            var ano = new Date().getFullYear();
+            /*Recibimos la cantidad de dias del mes*/
+            var numeros = new Date( ano,numeroMes,0).getDate();
+            /*Retornamos la cantidad de dias*/
+            return numeros;
+        }
              
-             
-            /**********************************************************************************************
-            * Esta fncion se encarga de construir dinamicamente, la tabla calendario del mes seleccionado *
-            **********************************************************************************************/
-            function generaTabla(diasMes){
-                /*Vacioamos el contenido de la tabla*/
-                $("#tablaDias").empty();
-                /*Iniciamos la apertura de la tabla*/
-                $("#tablaDias").append("<table><tr>");
-                for (var i=1; i  < diasMes + 1; i++){
-                    $("#tablaDias").append("<td><td style='padding: 10px;'><input type='checkbox' value='" + i + "'><label>"+i+"</label></td>");
-                    /*esto se realiza para cerrar la fila cada 7 dias y aperturar una nueva Fila*/
-                    switch (i) {
-                        case 7:
-                            $("#tablaDias").append('</tr><tr>');
-                        break;
-                        case 14:
-                            $("#tablaDias").append('</tr><tr>');
-                        break;
-                        case 21:
-                            $("#tablaDias").append('</tr><tr>');
-                        break;
-                        case 28:
-                            $("#tablaDias").append('</tr><tr>');
-                        break;
-                        default:
-                            break;
-                    }
-                    
+            
+        /**********************************************************************************************
+        * Esta funcion se encarga de construir dinamicamente, la tabla calendario del mes seleccionado *
+        **********************************************************************************************/
+        function generaTabla(diasMes,diaSemana){
+            /*Vacioamos el contenido de la tabla*/
+            $("#tablaDias").empty();
+            /*Iniciamos la apertura de la tabla*/
+            $("#tablaDias").append("<table><tr>");
+            for (var i=1; i  < diasMes + 1; i++){
+                if (i < 10) {
+                    $("#tablaDias").append("<td><td style='padding: 10px;text-align: center;color:#335f7d '><input type='checkbox' value='0" + i + "'><label>"+ diaSemana[i-1] +" 0"+i+"</label></td>");
+                }else{
+                    $("#tablaDias").append("<td><td style='padding: 10px;text-align: center;color:#335f7d '><input type='checkbox' value='" + i + "'><label>"+ diaSemana[i-1] +" "+i+"</label></td>");
                 }
-                /*Cerramos la tabla*/
-                $("#tablaDias").append("</table>");
+                /*esto se realiza para cerrar la fila cada 7 dias y aperturar una nueva Fila*/
+                
+                switch (i) {
+                    case 7:
+                        $("#tablaDias").append('</tr><tr>');
+                    break;
+                    case 14:
+                        $("#tablaDias").append('</tr><tr>');
+                    break;
+                    case 21:
+                        $("#tablaDias").append('</tr><tr>');
+                    break;
+                    case 28:
+                        $("#tablaDias").append('</tr><tr>');
+                    break;
+                    default:
+                        break;
+                }
+                
             }
-
-       
+            /*Cerramos la tabla*/
+            $("#tablaDias").append("</table>");
+        }
     </script>
 </head>
 
@@ -82,23 +121,24 @@
     <div class="container-fluid">
         <div class="row content">
             <div class="col-md-8">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="col-md-4">
-                            <label for="txtCedulaEspecialista">Cedula Especialista:</label>
-                            <input type="text" class="form-control" id="txtCedulaEspecialista">
-                        </div>
-                        <div class="col-md-4">
-                            <label for="txtNombreEspecialista">Nombre Especialista</label>
-                            <input type="text" class="form-control" id="txtNombreEspecialista">
-                        </div>
-                        <div class="col-md-4">
-                            <label for="txtEspecialidadEspecialista">Especialidad</label>
-                            <input type="text" class="form-control" id="txtEspecialidadEspecialista">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="col-md-4">
+                                <label for="txtCedulaEspecialista">Cedula Especialista:</label>
+                                <input type="text" class="form-control" id="txtCedulaEspecialista">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="txtNombreEspecialista">Nombre Especialista</label>
+                                <input type="text" class="form-control" id="txtNombreEspecialista">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="txtEspecialidadEspecialista">Especialidad</label>
+                                <input type="text" class="form-control" id="txtEspecialidadEspecialista">
+                            </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-md-2">
                     <div class="panel panel-default">
                         <div class="panel-body">
@@ -115,25 +155,26 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-6" id="panelFecha">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <label for="txtFechaInicio">Fecha Inicio</label>
                                 <input type="button" class="form-control" id="txtFechaInicio">
+                                
                             </div>
-                            <div class="col-md-12">
-                                <label for="txtFechaFin">Especialidad</label>
-                                <input type="button" class="form-control" id="txtFechaFin">
+                            <div class="col-md-6">
+                                    <label for="txtFechaFin">Fecha Fin</label>
+                                    <input type="button" class="form-control" id="txtFechaFin">
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-10" id="panelCalendario">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <label for="tipoMes">Tipo de Solicitud:</label><br>
                                 <select name='tipoMes' class='form-control' id='tipoMes'>
                                     <!-- <option value=""></option> -->
@@ -152,7 +193,7 @@
                                     <option value="12">Diciembre</option>
                                 </select>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-10">
                                 <div class="panel panel-default" id="panel-tablaDias">
                                     <div class="panel-body" id="tablaDias">
                                         
